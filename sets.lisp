@@ -20,3 +20,30 @@
         (every (flambda (!X) (get !X 'atom-subset)) !L))
      (loop for !X in !M do (remprop !X  'atom-subset))
      VERIFIED))
+
+(defun is-subset (!L !M &optional !FUN)
+   (cond ((null !FUN)
+          (every (flambda (!Z) (memq !Z !M)) !L))
+         ((eq !FUN 'equal)
+          (every (flambda (!Z) (member !Z !M)) !L))
+         (t
+          (every (flambda (!Z)
+                   (some (flambda (!QQQ) (funcall !FUN !Z !QQQ))
+                         !M)
+                   !L)))))
+
+; find the set difference between !L and !M under equality comparator
+; !FUN
+(defun set-diff (!L !M &optional !FUN)
+   (cond ((null !FUN)
+          (loop for !Z in !L 
+            do (when (not (memq !Z !M))) 
+            (save !Z)))
+         ((eq !FUN 'equal)
+          (loop for !Z in !L 
+            do (when (not (member !Z !M))) 
+            (save !Z)))
+         (t
+          (loop for !Z in !L 
+            do (when (not (some (flambda (!Q) (funcall !FUN !Z !Q)) !M)))
+            (save !Z)))))
