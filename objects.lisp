@@ -14,10 +14,20 @@
     NEG-SKOLEM ; Skolemization of negation of STD-FORM
     INTRODUCE-SK)) ; Skolem constants introduced
 
-(defclass pf-type ()
-  (atom SYNTAX-TYPE ; either PRED, FUNC, VAR, or CONST
-   fixnum NUM-ARGS  ; number of arguments
-   exp ARG-TYPES    ; types of arguments
+; (defclass pf-type ()
+;   (atom SYNTAX-TYPE ; either PRED, FUNC, VAR, or CONST
+;    fixnum NUM-ARGS  ; number of arguments
+;    exp ARG-TYPES    ; types of arguments
+;        VAL-TYPE))
+
+(defclass pf-type()
+  ((SYNTAX-TYPE :type atom) ; either PRED, FUNC, VAR, or CONST
+   (NUM-ARGS :type fixnum)  ; number of arguments
+   (ARG-TYPES :type exp)    ; types of arguments
        VAL-TYPE))
 
-(defclass non-logical() (pf-type PF-TYPE exp PF-STEPS))
+
+
+(defclass non-logical()
+  ((PF-TYPE :type pf-type)
+   (PF-STEPS :Type exp)))
