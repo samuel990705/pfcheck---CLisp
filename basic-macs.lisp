@@ -1,7 +1,7 @@
 ; This is file basic-macs.l
 
-(defmacro putprop (var val prop); sets the property "prop" of plist variable "var" to value "val"
-  `(setf (get ,var ,prop) ,val))
+;(defmacro putprop (var val prop); sets the property "prop" of plist variable "var" to value "val"
+;  `(setf (get ,var ,prop) ,val))
   ;get grabs a certain property of a plist variable
   ;setf sets that property to the new value
 
@@ -25,8 +25,8 @@
 ;           (putprop F t 'LOADED))))
 
 
-(defmacro flambda (&rest L)
-   `(function (lambda ,@L)))
+;(defmacro flambda (&rest L)
+;   `(function (lambda ,@L)))
 
 
 ; ; Return the tail of !!L starting at the first element !!X for which

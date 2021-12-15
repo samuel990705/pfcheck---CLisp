@@ -1,8 +1,8 @@
 ; unify.l carries out simple resolution. It is pretty much
 ; the code from AIP. 
 
-load "objects.lisp" 
-load "sets.lisp"
+(load "objects.lisp")
+(load "sets.lisp")
 
 ; A unification is a data-type. POSLIT is the positive literal
 ; unified; NEGLIT, the negative literal; BDGS, the bindings
